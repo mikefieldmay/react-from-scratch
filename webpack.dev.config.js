@@ -3,6 +3,7 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    mode: 'development',
     devtool: 'cheap-module-eval-source-map',
     entry: './src/index.js',
     output: {
@@ -30,8 +31,9 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             importLoaders: 1,
-                            modules: true,
-                            localIdentName: '[name]__[local]__[hash:base64:5]'
+                            modules: {
+                                localIdentName: '[name]__[local]__[hash:base64:5]'
+                            }
                         }
                      },
                      { 

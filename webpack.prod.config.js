@@ -1,6 +1,7 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BrotliPlugin = require('brotli-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -9,7 +10,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        chunkFilename: '[name][id].js',
+        chunkFilename: '[name].js',
         publicPath: ''
     },
     resolve: {
@@ -63,6 +64,12 @@ module.exports = {
             template: __dirname + '/src/index.html',
             filename: 'index.html',
             inject: 'body'
+        }),
+        new BrotliPlugin({
+            asset: '[path].br[query]',
+            test: /\.js$|\.css$|\.html$/,
+            threshold: 10240,
+            minRatio: 0.7
         })
     ],
     optimization: {

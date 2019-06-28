@@ -1,6 +1,7 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     mode: 'development',
@@ -9,7 +10,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        chunkFilename: '[id].js',
+        chunkFilename: '[name].js',
         publicPath: ''
     },
     resolve: {
@@ -63,6 +64,18 @@ module.exports = {
             template: __dirname + '/src/index.html',
             filename: 'index.html',
             inject: 'body'
-        })
-    ]
+        }),
+        new BundleAnalyzerPlugin()
+    ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+              vendors: {
+                chunks: 'all',
+                test: /[\\/]node_modules[\\/]/,
+                priority: -10
+              }
+            }
+          }
+    }
 };

@@ -13,7 +13,7 @@ npm start
 ## To Do list
 
 The base app will live in the master branch, but I intend to add new features in different branches. The features that will be added are:
-- [ ] Upgrade to Webpack 4
+- [x] Upgrade to Webpack 4 and add vendor chunking (merged to master to avoid dependency risks)
 - [ ] Add Typescript
 - [ ] Add Jest Testing library
 - [ ] Add Todo list with Redux & Redux Sagas

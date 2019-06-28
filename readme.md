@@ -19,6 +19,7 @@ The base app will live in the master branch, but I intend to add new features in
 - [ ] Add Todo list with Redux & Redux Sagas
 - [ ] Add Storybook to document components
 - [ ] Add Cypress to support ui tests
+- [ ] Add prettier to run in pre-commit hook
 
 ## Acknowledgements
 

@@ -8,7 +8,7 @@
     "start": "webpack-dev-server --config webpack.dev.config.js",
     "build": "rimraf dist && webpack --config webpack.prod.config.js --progress --profile --colors",
     "prod": "cd ./dist/ && http-server",
-    "prettier:write": "yarn prettier --write '**/*.js'"
+    "prettier:write": "yarn prettier --write '**/*.{ts,js,css,html}'"
   },
   "keywords": [],
   "author": "",

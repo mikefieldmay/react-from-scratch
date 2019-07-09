@@ -1,86 +1,17 @@
-const path = require('path');
-const autoprefixer = require('autoprefixer');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge');
+const baseConfig = require('./webpack.base.config.js');
 const BrotliPlugin = require('brotli-webpack-plugin');
 
-module.exports = {
+const config = {
     mode: 'production',
-    devtool: 'cheap-module-eval-source-map',
-    entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
-        chunkFilename: '[name].js',
-        publicPath: ''
-    },
-    resolve: {
-        extensions: ['.js', '.jsx']
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.css$/,
-                exclude: /node_modules/,
-                use: [
-                    { loader: 'style-loader' },
-                    { 
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                            modules: {
-                                localIdentName: '[name]__[local]__[hash:base64:5]'
-                            }
-                        }
-                     },
-                     { 
-                         loader: 'postcss-loader',
-                         options: {
-                             ident: 'postcss',
-                             plugins: () => [
-                                 autoprefixer({
-                                     browsers: [
-                                        "> 1%",
-                                        "last 2 versions"
-                                     ]
-                                 })
-                             ]
-                         }
-                      }
-                ]
-            },
-            {
-                test: /\.(png|jpe?g|gif)$/,
-                loader: 'url-loader?limit=8000&name=images/[name].[ext]'
-            }
-        ]
-    },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: __dirname + '/src/index.html',
-            filename: 'index.html',
-            inject: 'body'
-        }),
         new BrotliPlugin({
             asset: '[path].br[query]',
             test: /\.js$|\.css$|\.html$/,
             threshold: 10240,
             minRatio: 0.7
         })
-    ],
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-              vendors: {
-                chunks: 'all',
-                test: /[\\/]node_modules[\\/]/,
-                priority: -10
-              }
-            }
-          }
-    }
+    ]
 };
+
+module.exports = merge(baseConfig, config);

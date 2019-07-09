@@ -16,7 +16,7 @@ The base app will live in the master branch, but I intend to add new features in
 
 - [x] Upgrade to Webpack 4 and add vendor chunking (merged to master to avoid dependency risks)
 - [x] Add Typescript
-- [ ] Add prettier to run in pre-commit hook
+- [x] Add prettier to run in pre-commit hook
 - [ ] Add Jest Testing library
 - [ ] Add Todo list with Redux & Redux Sagas
 - [ ] Add Storybook to document components

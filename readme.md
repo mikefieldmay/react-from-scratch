@@ -13,18 +13,20 @@ npm start
 ## To Do list
 
 The base app will live in the master branch, but I intend to add new features in different branches. The features that will be added are:
+
 - [x] Upgrade to Webpack 4 and add vendor chunking (merged to master to avoid dependency risks)
-- [ ] Add Typescript
+- [x] Add Typescript
+- [ ] Add prettier to run in pre-commit hook
 - [ ] Add Jest Testing library
 - [ ] Add Todo list with Redux & Redux Sagas
 - [ ] Add Storybook to document components
 - [ ] Add Cypress to support ui tests
-- [ ] Add prettier to run in pre-commit hook
 - [ ] Add SSR Rendering for application
 
 ## Notes
+
 - 28/6/19 Added [brottli compression](https://opensource.googleblog.com/2015/09/introducing-brotli-new-compression.html) in order to reduce vendor bundle size, but haven't worked out how to serve it with http-server. Will investigate further at a later date.
- 
+
 ## Acknowledgements
 
 The basis for this app comes from the excellent Udemy course: [React The Complete Guide](https://www.udemy.com/react-the-complete-guide-incl-redux/).

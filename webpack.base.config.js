@@ -1,9 +1,10 @@
 const path = require("path");
 const autoprefixer = require("autoprefixer");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WebpackShellPlugin = require("webpack-shell-plugin");
 
 module.exports = {
-  devtool: "cheap-module-eval-source-map",
+  devtool: "source-map",
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -12,10 +13,25 @@ module.exports = {
     publicPath: ""
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx", ".ts", ".tsx"]
   },
   module: {
     rules: [
+      {
+        test: /\.ts(x?)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "ts-loader"
+          }
+        ]
+      },
+      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        loader: "source-map-loader"
+      },
       {
         test: /\.js$/,
         loader: "babel-loader",
@@ -59,6 +75,10 @@ module.exports = {
       template: __dirname + "/src/index.html",
       filename: "index.html",
       inject: "body"
+    }),
+    new WebpackShellPlugin({
+      onBuildStart: ["yarn build:style-typings"],
+      dev: true // makes sure command runs on file change
     })
   ],
   optimization: {

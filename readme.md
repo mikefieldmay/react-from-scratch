@@ -17,8 +17,8 @@ The base app will live in the master branch, but I intend to add new features in
 - [x] Upgrade to Webpack 4 and add vendor chunking (merged to master to avoid dependency risks). Webpack is prevalent in a lot of web apps and as such I thought it'd be a good idea to practice upgrading it as well as getting a better idea of how it works under the hood
 - [x] Add Typescript. Having used Typescript for both Angular and React applications I beleive it's an excellent enhancement to javascript and vastly improves code clarity.
 - [x] Add prettier to run in pre-commit hook. Prettier is a very popular formatting tool and it avoids arguments about code style on PRs
-- [ ] Add ESlint. Similar to above and can be a good way of catching errors before code is commited.
-- [ ] Add Jest Testing library - unit testing and snapshot testing using Jest are important elements of a React app
+- [x] Add ESlint. Similar to above and can be a good way of catching errors before code is commited.
+- [x] Add Jest Testing library - unit testing and snapshot testing using Jest are important elements of a React app
 - [ ] Add Todo list with Redux - Redux is a popular state management system and used across
 - [ ] Add Cypress to support ui tests - Cypress is a very popular BDD and screenshot testing tool
 - [ ] Add SSR Rendering for application. SSR in React can improve user experience by sending a html template back to the app much faster.

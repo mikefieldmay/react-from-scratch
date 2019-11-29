@@ -6,7 +6,7 @@ import { asyncComponent } from "./hoc/asyncComponent";
 import { LinkButton } from "./components/LinkButton/LinkButton";
 
 const AsyncPizza = asyncComponent(() => {
-  return import("./containers/Pizza.js");
+  return import("./containers/Pizza");
 });
 
 export class App extends Component {
